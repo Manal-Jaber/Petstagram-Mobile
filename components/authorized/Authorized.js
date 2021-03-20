@@ -13,17 +13,18 @@ import profileIcon from '../../assets/profile.jpg';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
+
 export default function Authorized({ navigation }) {
 
   return (
-    <Tab.Navigator initialRouteName="Home" swipeEnabled tabBarOptions={{ activeTintColor: 'black', }}>
+    <Tab.Navigator initialRouteName="Home" tabBarOptions={{ activeTintColor: 'black', }}>
         <Tab.Screen 
         name="Home"
         component={Home}
         options={{
           tabBarLabel: 'Home',
           tabBarOptions: { showIcon: true, },
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: () => (
             <Image
               style={styles.icon}
               source={homeIcon}
@@ -34,7 +35,7 @@ export default function Authorized({ navigation }) {
         options={{
           tabBarLabel: 'Chat',
           tabBarOptions: { showIcon: true, },
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: () => (
             <Image
               style={styles.icon}
               source={chatIcon}
@@ -45,7 +46,7 @@ export default function Authorized({ navigation }) {
         options={{
           tabBarLabel: 'Camera',
           tabBarOptions: { showIcon: true, },
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: () => (
             <Image
               style={styles.icon}
               source={cameraIcon}
@@ -55,8 +56,8 @@ export default function Authorized({ navigation }) {
         <Tab.Screen name="Profile" component={Profile}
         options={{
           tabBarLabel: 'Profile',
-          tabBarOptions: { showIcon: true, },
-          tabBarIcon: ({ color }) => (
+          tabBarOptions: { showIcon: true},
+          tabBarIcon: () => (
             <Image
               style={{ width:25, height:25, borderRadius:25 }}
               source={profileIcon}
