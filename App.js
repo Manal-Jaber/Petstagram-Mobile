@@ -1,21 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useEffect} from 'react';
+import Login from './components/login/Login';
 
 export default function App() {
+// console.log(process.env.APP_MANIFEST.extra.Host)
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Login/>
   );
 }
+// import React, { useState, useEffect } from 'react';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// import { Text, View, StyleSheet } from 'react-native';
+// import { AppLoading } from 'expo';
+// import { useFonts, Cookie_400Regular } from '@expo-google-fonts/cookie';
+
+// export default () => {
+//   let [fontsLoaded] = useFonts({
+//     Cookie_400Regular,
+//   });
+
+//   let fontSize = 24;
+//   let paddingVertical = 6;
+
+//   if (!fontsLoaded) {
+//     return <AppLoading/>;
+//   } else {
+//     return (
+//       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//         <Text
+//           style={{
+//             fontSize,
+//             paddingVertical,
+//             // Note the quoting of the value for `fontFamily` here; it expects a string!
+//             fontFamily: 'Cookie_400Regular',
+//           }}>
+//           Cookie Regular
+//         </Text>
+//       </View>
+//     );
+//   }
+// };
