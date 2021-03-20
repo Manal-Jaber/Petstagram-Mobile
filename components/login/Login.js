@@ -3,28 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import Svg, { Line} from 'react-native-svg';
 
-import { AppLoading } from 'expo';
-import { Cookie_400Regular } from '@expo-google-fonts/cookie';
-import { Alice_400Regular } from '@expo-google-fonts/alice';
-import { useFonts } from 'expo-font';
-
 import logo from '../../assets/logo.png';
 import facebook from '../../assets/facebook.png';
 import google from '../../assets/google.png';
 
-export default function Login() {
-  let [fontsLoaded] = useFonts({
-    Cookie_400Regular,
-    Alice_400Regular
-  });
-
-  // if (!fontsLoaded) {
-  //   return <AppLoading/>;
-  // } else {
+export default function Login({navigation}) {
     return (
       <View style={styles.container}>
-        <Svg height="1000" width="10" style={{position:'absolute', zIndex:-1, alignSelf:'flex-start'}}>
-          <Line x1="10" y1="0" x2="10" y2="1000" stroke="#FEC3B9" strokeWidth="5" />
+        <Svg height="1000" width="35" style={{position:'absolute', zIndex:-1, alignSelf:'flex-start'}}>
+          <Line x1="35" y1="0" x2="35" y2="1000" stroke="#FEC3B9" strokeWidth="5" />
         </Svg>
         <View style={styles.logo}>
           <Image source={logo} style={{height:100, width:100}}/>
@@ -35,7 +22,7 @@ export default function Login() {
         </Svg>
         <TextInput placeholder='Username' style={styles.text}/>
         <TextInput placeholder='Password' style={styles.text}/>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Authorized', { screen: 'Home' })}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <View>
@@ -52,7 +39,7 @@ export default function Login() {
             </TouchableOpacity>
           </View>
           <Text style={styles.or}>or {"\n"}.</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
             <Text style={styles.loginText}>Create a new account</Text>
           </TouchableOpacity>
         </View>
@@ -60,7 +47,6 @@ export default function Login() {
       </View>
     );
     }
-// }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
