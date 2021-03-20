@@ -1,41 +1,39 @@
 import React, {useEffect} from 'react';
 import Login from './components/login/Login';
+import Register from './components/login/Register';
+import Authorized from './components/authorized/Authorized';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
+import { Cookie_400Regular } from '@expo-google-fonts/cookie';
+import { Alice_400Regular } from '@expo-google-fonts/alice';
+import { Salsa_400Regular } from '@expo-google-fonts/salsa';
+
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 export default function App() {
-// console.log(process.env.APP_MANIFEST.extra.Host)
+// console.log( Expo.Constants.manifest.extra.Host)
+let [fontsLoaded] = useFonts({
+  Cookie_400Regular,
+  Alice_400Regular,
+  Salsa_400Regular
+});
+
+if (!fontsLoaded) {
+  return <AppLoading/>;
+} else {
   return (
-    <Login/>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
+        <Stack.Screen name="Authorized" component={Authorized} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-// import React, { useState, useEffect } from 'react';
-
-// import { Text, View, StyleSheet } from 'react-native';
-// import { AppLoading } from 'expo';
-// import { useFonts, Cookie_400Regular } from '@expo-google-fonts/cookie';
-
-// export default () => {
-//   let [fontsLoaded] = useFonts({
-//     Cookie_400Regular,
-//   });
-
-//   let fontSize = 24;
-//   let paddingVertical = 6;
-
-//   if (!fontsLoaded) {
-//     return <AppLoading/>;
-//   } else {
-//     return (
-//       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//         <Text
-//           style={{
-//             fontSize,
-//             paddingVertical,
-//             // Note the quoting of the value for `fontFamily` here; it expects a string!
-//             fontFamily: 'Cookie_400Regular',
-//           }}>
-//           Cookie Regular
-//         </Text>
-//       </View>
-//     );
-//   }
-// };
+}
