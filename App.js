@@ -13,6 +13,9 @@ import { Cookie_400Regular } from '@expo-google-fonts/cookie';
 import { Alice_400Regular } from '@expo-google-fonts/alice';
 import { Salsa_400Regular } from '@expo-google-fonts/salsa';
 
+import { LogBox } from 'react-native'
+LogBox.ignoreAllLogs();
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 export default function App() {

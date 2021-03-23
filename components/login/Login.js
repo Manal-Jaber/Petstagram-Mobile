@@ -20,7 +20,7 @@ export default function Login({navigation}) {
         <Svg height="10" width="500">
           <Line x1="0" y1="0" x2="500" y2="0" stroke="#FEC3B9" strokeWidth="5" />
         </Svg>
-        <TextInput placeholder='Username' style={styles.text}/>
+        <TextInput placeholder='Email' style={styles.text}/>
         <TextInput placeholder='Password' style={styles.text}/>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Authorized', { screen: 'Home' })}>
           <Text style={styles.buttonText}>Login</Text>
