@@ -23,7 +23,7 @@ export default function Register({navigation}) {
         <TextInput placeholder='Username' style={styles.text}/>
         <TextInput placeholder='Email' style={styles.text}/>
         <TextInput placeholder='Password' style={styles.text}/>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Authorized', { screen: 'Home' })}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
         <View>
