@@ -14,7 +14,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-export default function Authorized({ navigation }) {
+export default function Authorized(props) {
 
   return (
     <Tab.Navigator initialRouteName="Home" tabBarOptions={{ activeTintColor: 'black', }}>
@@ -53,7 +53,7 @@ export default function Authorized({ navigation }) {
             />
           ), 
         }}/>
-        <Tab.Screen name="Profile" component={Profile}
+        {/* <Tab.Screen name="Profile" component={Profile}
         options={{
           tabBarLabel: 'Profile',
           tabBarOptions: { showIcon: true},
@@ -63,7 +63,20 @@ export default function Authorized({ navigation }) {
               source={profileIcon}
             />
           ), 
-        }}/>
+        }}/> */}
+        <Tab.Screen name="Profile"
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarOptions: { showIcon: true},
+          tabBarIcon: () => (
+            <Image
+              style={{ width:25, height:25, borderRadius:25 }}
+              source={profileIcon}
+            />
+          ), 
+        }}>
+          {()=><Profile render={props.render} setRender={props.setRender}/>}
+        </Tab.Screen>
     </Tab.Navigator>
   );
 }

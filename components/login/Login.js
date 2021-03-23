@@ -1,14 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import Svg, { Line} from 'react-native-svg';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { LoginAPI, verifyToken } from './API/LoginAPI';
 
 import logo from '../../assets/logo.png';
 import facebook from '../../assets/facebook.png';
 import google from '../../assets/google.png';
 
-export default function Login({navigation}) {
+export default function Login(props) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const data = await LoginAPI(email, password);2
+    if (data.error) {
+        setError(data.error)
+        return
+    }
+    const dataVerification = await verifyToken(data.access_token);
+    // console.log(dataVerification)
+    if (dataVerification.status) {
+        return
+    }
+    await AsyncStorage.setItem('token', data.access_token)
+    console.log(await AsyncStorage.getItem('token'))
+    props.setRender(!props.render)
+    // navigation.navigate('Home')
+  }
+
+
     return (
+    <ScrollView>
       <View style={styles.container}>
         <Svg height="1000" width="35" style={{position:'absolute', zIndex:-1, alignSelf:'flex-start'}}>
           <Line x1="35" y1="0" x2="35" y2="1000" stroke="#FEC3B9" strokeWidth="5" />
@@ -20,9 +47,9 @@ export default function Login({navigation}) {
         <Svg height="10" width="500">
           <Line x1="0" y1="0" x2="500" y2="0" stroke="#FEC3B9" strokeWidth="5" />
         </Svg>
-        <TextInput placeholder='Email' style={styles.text}/>
-        <TextInput placeholder='Password' style={styles.text}/>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Authorized', { screen: 'Home' })}>
+        <TextInput placeholder='Email' style={styles.text} onChangeText={(e)=>setEmail(e)}/>
+        <TextInput placeholder='Password' style={styles.text} onChangeText={(e)=>setPassword(e)}/>
+        <TouchableOpacity style={styles.button} onPress={(e) => handleLogin(e)}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <View>
@@ -45,6 +72,7 @@ export default function Login({navigation}) {
         </View>
         <StatusBar style="auto"/>
       </View>
+      </ScrollView>
     );
     }
 const styles = StyleSheet.create({
