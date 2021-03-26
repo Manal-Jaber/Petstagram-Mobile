@@ -2,35 +2,19 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import NonAuthorized from '../../login/NonAuthorized'
-import { useRoute, useNavigationState, } from '@react-navigation/native';
-import { SairaExtraCondensed_400Regular } from '@expo-google-fonts/dev';
-
+import { LogoutAPI } from './LogoutAPI';
 
 export default function Profile(props) {
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    console.log(await AsyncStorage.getItem('token'))
-    const response = await fetch(`${Expo.Constants.manifest.extra.Host}/api/logout`, {
-        method: 'Post',
-        headers: {
-            'content-type': 'application/json',
-            'accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest',
-            'Authorization': `Bearer ${await AsyncStorage.getItem('token')}`
-        }
-    })
-    const data = await response.json()
-    // console.log(data)
+    const data = await LogoutAPI(await AsyncStorage.getItem('token'));
     if (data.message) {
-        await AsyncStorage.removeItem('token');
-        props.setRender(!props.render)
-        // navigation.navigate('Login')
+      await AsyncStorage.removeItem('token');
+      props.setRender(!props.render)
+      // navigation.navigate('Login')
     }
-}
-
-
+  }
     return (
       <View style={styles.container}>
         <Text>Profile</Text>
