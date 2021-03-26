@@ -1,5 +1,6 @@
+import Constants from 'expo-constants';
 export const LoginAPI = async(email, password)=>{
-    const response = await fetch(`${Expo.Constants.manifest.extra.Host}/api/login`,{
+    const response = await fetch(`${Constants.manifest.extra.Host}/api/login`,{
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -15,7 +16,7 @@ export const LoginAPI = async(email, password)=>{
     return data;
 }
 export const verifyToken = async(token)=>{
-    const response = await fetch(`${Expo.Constants.manifest.extra.Host}/api/verify`,{
+    const response = await fetch(`${Constants.manifest.extra.Host}/api/verify`,{
         method: 'GET',
         headers: {
             'content-type': 'application/json',

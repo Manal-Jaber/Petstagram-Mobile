@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import Svg, { Line} from 'react-native-svg';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {useNavigation} from '@react-navigation/native';
 
 import { LoginAPI, verifyToken } from './API/LoginAPI';
 
@@ -11,6 +12,8 @@ import facebook from '../../assets/facebook.png';
 import google from '../../assets/google.png';
 
 export default function Login(props) {
+
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -28,7 +31,6 @@ export default function Login(props) {
         return
     }
     await AsyncStorage.setItem('token', data.access_token)
-    console.log(await AsyncStorage.getItem('token'))
     props.setRender(!props.render)
     // navigation.navigate('Home')
   }
