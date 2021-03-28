@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import logo from '../../../assets/logo.png';
 import chat from '../../../assets/chat.png'
 
 export default function Post({image, profile, username}) {
+  
+  const navigation = useNavigation();
+  
     return (
         <View style={{alignSelf: 'flex-start', flexDirection:'column', alignItems:'flex-start'}}>
             <View style={styles.profileHead}>
@@ -22,7 +26,7 @@ export default function Post({image, profile, username}) {
               <TouchableOpacity style={{margin:10}}>
                 <Text style={styles.headProfileText}>Quote goes here</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{margin:10}}>
+              <TouchableOpacity style={{margin:10}} onPress={()=>navigation.navigate('Chat')}>
                 <Image style={{width: 20, height: 20}} source={chat}/>
               </TouchableOpacity>
               {/*here goes the message icon*/}
