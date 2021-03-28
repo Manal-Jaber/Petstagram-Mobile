@@ -50,7 +50,7 @@ export default function Login(props) {
           <Line x1="0" y1="0" x2="500" y2="0" stroke="#FEC3B9" strokeWidth="5" />
         </Svg>
         <TextInput placeholder='Email' style={styles.text} onChangeText={(e)=>setEmail(e)}/>
-        <TextInput placeholder='Password' style={styles.text} onChangeText={(e)=>setPassword(e)}/>
+        <TextInput secureTextEntry={true} placeholder='Password' style={styles.text} onChangeText={(e)=>setPassword(e)}/>
         <TouchableOpacity style={styles.button} onPress={(e) => handleLogin(e)}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>

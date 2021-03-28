@@ -4,14 +4,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { LogoutAPI } from './LogoutAPI';
 
-export default function Logout(props) {
+export default function Logout({render, setRender}) {
 
   const handleLogout = async (e) => {
     e.preventDefault();
     const data = await LogoutAPI(await AsyncStorage.getItem('token'));
     if (data.message) {
       await AsyncStorage.removeItem('token');
-      props.setRender(!props.render)
+      setRender(!render)
       // navigation.navigate('Login')
     }
   }

@@ -2,18 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 import logo from '../../../assets/logo.png';
-import userProfile from '../../../assets/userProfile.png';
-import post from '../../../assets/post.png';
 import chat from '../../../assets/chat.png'
 
-export default function Post() {
+export default function Post({image, profile, username}) {
     return (
         <View style={{alignSelf: 'flex-start', flexDirection:'column', alignItems:'flex-start'}}>
             <View style={styles.profileHead}>
-              <Image source={userProfile} style={styles.profile}/>
-              <Text style={styles.headProfileText}>Username</Text>
+              <Image source={profile} style={styles.profile}/>
+              <Text style={styles.headProfileText}>{username}</Text>
             </View>
-            <Image source={post} style={styles.postImage}/>
+            <Image source={image} style={styles.postImage}/>
             <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
                 <View style={{margin:10}}>
                     <TouchableOpacity>

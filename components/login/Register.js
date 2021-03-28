@@ -53,7 +53,7 @@ export default function Register(props) {
         </Svg>
         <TextInput placeholder='Username' style={styles.text} onChangeText={(e)=>setUsername(e)}/>
         <TextInput placeholder='Email' style={styles.text} onChangeText={(e)=>setEmail(e)}/>
-        <TextInput placeholder='Password' style={styles.text} onChangeText={(e)=>setPassword(e)}/>
+        <TextInput secureTextEntry={true} placeholder='Password' style={styles.text} onChangeText={(e)=>setPassword(e)}/>
         <TouchableOpacity style={styles.button} onPress={(e) => handleRegister(e)}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>

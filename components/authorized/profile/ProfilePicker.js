@@ -6,7 +6,7 @@ import mishka from '../../../assets/mishka.jpg';
 
 import Logout from '../logout/Logout';
 
-export default function ProfilePicker () {
+export default function ProfilePicker ({render,setRender}) {
   const profiles = [
     {
       id:0,
@@ -54,7 +54,7 @@ export default function ProfilePicker () {
           }
           showsHorizontalScrollIndicator={false}
         />
-        <Logout/>
+        <Logout render={render} setRender={setRender}/>
         </View>
       </TouchableWithoutFeedback>}
     </View>

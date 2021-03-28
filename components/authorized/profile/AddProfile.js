@@ -8,7 +8,7 @@ import ProfilePicker from './ProfilePicker';
 
 import profile from '../../../assets/profile.jpg'
 
-export default function EditProfile(props) {
+export default function EditProfile({render,setRender}) {
 
   const navigation = useNavigation();
 
@@ -27,7 +27,7 @@ export default function EditProfile(props) {
     <ScrollView>
       <View style={styles.container}>
         <View style={{alignSelf:'flex-end'}}>
-            <ProfilePicker/>
+            <ProfilePicker render={render} setRender={setRender}/>
         </View>
         <View style={{alignItems:'center'}}>
             <Image source={profile} style={styles.bigProfile}/>

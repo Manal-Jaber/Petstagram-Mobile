@@ -4,11 +4,11 @@ import ProfilePicker from '../profile/ProfilePicker'
 
 import logo from '../../../assets/logo.png';
 
-export default function Head() {
+export default function Head({render,setRender}) {
 return(
     <View style={styles.head}>
         <Text style={styles.headLogoText}>Petstagram</Text>
-        <ProfilePicker/>
+        <ProfilePicker render={render} setRender={setRender}/>
         <Image source={logo} style={{height:50, width:50}}/>
     </View>
 )

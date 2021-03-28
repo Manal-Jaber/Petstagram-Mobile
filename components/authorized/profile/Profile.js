@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import ViewProfile from './ViewProfile';
 import EditProfile from './EditProfile';
 import AddProfile from './AddProfile';
+import MyPost from './MyPost';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -19,6 +20,9 @@ export default function Profile({render,setRender}) {
             </Stack.Screen>
             <Stack.Screen name="AddProfile" >
                 {(props)=><AddProfile {...props} render={render} setRender={setRender}/>}
+            </Stack.Screen>
+            <Stack.Screen name="MyPost" >
+                {(props)=><MyPost {...props} render={render} setRender={setRender}/>}
             </Stack.Screen>
         </Stack.Navigator>
     )
