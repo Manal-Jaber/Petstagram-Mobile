@@ -8,6 +8,7 @@ import { LogoutAPI } from './LogoutAPI';
 import Head from '../head/Head';
 
 import profile from '../../../assets/profile.jpg';
+import image from '../../../assets/image.jpg';
 
 export default function Profile(props) {
 
@@ -45,6 +46,17 @@ export default function Profile(props) {
           <Svg height="10" width="500">
             <Line x1="0" y1="0" x2="500" y2="0" stroke="#FEC3B9" strokeWidth="5" />
           </Svg>
+          <View style={styles.imageContainer}>
+            <Image source={image} style={styles.image}/>
+            <Image source={image} style={styles.image}/>
+            <Image source={image} style={styles.image}/>
+            <Image source={image} style={styles.image}/>
+            <Image source={image} style={styles.image}/>
+            <Image source={image} style={styles.image}/>
+            <Image source={image} style={styles.image}/>
+            <Image source={image} style={styles.image}/>
+            <Image source={image} style={styles.image}/>
+          </View>
           <Text>Profile</Text>
           <TouchableOpacity onPress={(e) => handleLogout(e)}>
             <Text>Logout</Text>
@@ -80,5 +92,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: 'rgba(0,0,0,0.7)',
     margin: 10
+  },
+  imageContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  image: {
+    width: 120,
+    height:120
   }
 });
