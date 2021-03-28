@@ -1,35 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { LogoutAPI } from './LogoutAPI';
+import React, {useEffect} from 'react';
+import ViewProfile from './ViewProfile';
+import EditProfile from './EditProfile';
+import AddProfile from './AddProfile';
 
-export default function Profile(props) {
+import { createStackNavigator } from '@react-navigation/stack';
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    const data = await LogoutAPI(await AsyncStorage.getItem('token'));
-    if (data.message) {
-      await AsyncStorage.removeItem('token');
-      props.setRender(!props.render)
-      // navigation.navigate('Login')
-    }
-  }
-    return (
-      <View style={styles.container}>
-        <Text>Profile</Text>
-        <TouchableOpacity onPress={(e) => handleLogout(e)}>
-          <Text>Logout</Text>
-        </TouchableOpacity>
-        <StatusBar style="auto"/>
-      </View>
-    );
-    }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection:'column',
-    justifyContent: 'flex-start',
-    marginTop:10
-  },
-});
+const Stack = createStackNavigator();
+
+export default function Profile({render,setRender}) {
+
+    return(
+        <Stack.Navigator initialRouteName="ViewProfile">
+            <Stack.Screen name="ViewProfile" options={{ headerShown: false }} >
+                {(props)=><ViewProfile {...props} render={render} setRender={setRender}/>}
+            </Stack.Screen>
+            <Stack.Screen name="EditProfile" >
+                {(props)=><EditProfile {...props} render={render} setRender={setRender}/>}
+            </Stack.Screen>
+            <Stack.Screen name="AddProfile" >
+                {(props)=><AddProfile {...props} render={render} setRender={setRender}/>}
+            </Stack.Screen>
+        </Stack.Navigator>
+    )
+}
