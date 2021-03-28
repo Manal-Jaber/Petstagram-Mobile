@@ -10,6 +10,8 @@ import profile from '../../../assets/profile.jpg'
 
 export default function EditProfile(props) {
 
+  const navigation = useNavigation();
+
     const categories = [
         {
             id : 0,
