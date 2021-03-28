@@ -8,6 +8,7 @@ import Head from '../head/Head';
 
 import profile from '../../../assets/profile.jpg';
 import image from '../../../assets/image.jpg';
+import edit from '../../../assets/edit.png'
 
 export default function ViewProfile({render,setRender}) {
 
@@ -29,7 +30,8 @@ export default function ViewProfile({render,setRender}) {
               <Text style={[styles.ProfileText,styles.Text]}>300 sniffing</Text>
             </View>
             <TouchableOpacity onPress={()=>navigation.navigate('EditProfile')}>
-              <Text>Edit Profile</Text>
+              {/* <Text>Edit Profile</Text> */}
+              <Image source={edit} style={{width:100, height:50, marginTop:10}}/>
             </TouchableOpacity>
           </View>
         </View>
