@@ -7,7 +7,15 @@ import { useNavigation } from '@react-navigation/native';
 import Head from '../head/Head';
 
 import profile from '../../../assets/profile.jpg';
-import image from '../../../assets/image.jpg';
+import image0 from '../../../assets/image0.jpg';
+import image1 from '../../../assets/image1.jpg';
+import image2 from '../../../assets/image2.jpeg';
+import image3 from '../../../assets/image3.jpg';
+import image4 from '../../../assets/image4.jpg';
+import image5 from '../../../assets/image5.jpg';
+import image6 from '../../../assets/image6.png';
+import image7 from '../../../assets/image7.png';
+import image8 from '../../../assets/image8.jpg';
 import edit from '../../../assets/edit.png'
 
 export default function ViewProfile({render,setRender}) {
@@ -41,15 +49,15 @@ export default function ViewProfile({render,setRender}) {
           <Line x1="0" y1="0" x2="500" y2="0" stroke="#FEC3B9" strokeWidth="5" />
         </Svg>
         <View style={styles.imageContainer}>
-          <Image source={image} style={styles.image}/>
-          <Image source={image} style={styles.image}/>
-          <Image source={image} style={styles.image}/>
-          <Image source={image} style={styles.image}/>
-          <Image source={image} style={styles.image}/>
-          <Image source={image} style={styles.image}/>
-          <Image source={image} style={styles.image}/>
-          <Image source={image} style={styles.image}/>
-          <Image source={image} style={styles.image}/>
+          <Image source={image0} style={styles.image}/>
+          <Image source={image1} style={styles.image}/>
+          <Image source={image2} style={styles.image}/>
+          <Image source={image3} style={styles.image}/>
+          <Image source={image4} style={styles.image}/>
+          <Image source={image5} style={styles.image}/>
+          <Image source={image6} style={styles.image}/>
+          <Image source={image7} style={styles.image}/>
+          <Image source={image8} style={styles.image}/>
         </View>
         <StatusBar style="auto"/>
       </View>
