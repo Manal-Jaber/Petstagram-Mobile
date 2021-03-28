@@ -4,7 +4,7 @@ import { Text, Image, View, StyleSheet, FlatList, TouchableOpacity, TouchableWit
 import fluffy from '../../../assets/profile.jpg';
 import mishka from '../../../assets/mishka.jpg'
 
-export default function Test () {
+export default function ProfilePicker () {
   const profiles = [
     {
       id:0,
@@ -60,10 +60,10 @@ export default function Test () {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    // flex: 1,
+    // justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    // backgroundColor: 'white'
   },
   menu: {
     position: 'absolute',
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.36,
     shadowRadius: 6.68,
     elevation: 11,
+    // top: 50
   },
   profileHead: {
     flexDirection:'row',
