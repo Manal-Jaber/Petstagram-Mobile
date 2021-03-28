@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
 import { useNavigation } from '@react-navigation/native';
 
@@ -19,6 +19,10 @@ import image8 from '../../../assets/image8.jpg';
 import edit from '../../../assets/edit.png'
 
 export default function ViewProfile({render,setRender}) {
+  
+  const images = [
+    image0, image1, image2, image3, image4, image5, image6, image7, image8
+  ]
 
   const navigation = useNavigation();
 
@@ -50,33 +54,16 @@ export default function ViewProfile({render,setRender}) {
           <Line x1="0" y1="0" x2="500" y2="0" stroke="#FEC3B9" strokeWidth="5" />
         </Svg>
         <View style={styles.imageContainer}>
-          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image0, 'profile': profile, 'username': username})}>
-            <Image source={image0} style={styles.image}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image1, 'profile': profile, 'username': username})}>
-            <Image source={image1} style={styles.image}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image2, 'profile': profile, 'username': username})}>
-            <Image source={image2} style={styles.image}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image3, 'profile': profile, 'username': username})}>
-            <Image source={image3} style={styles.image}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image4, 'profile': profile, 'username': username})}>
-            <Image source={image4} style={styles.image}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image5, 'profile': profile, 'username': username})}>
-            <Image source={image5} style={styles.image}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image6, 'profile': profile, 'username': username})}>
-            <Image source={image6} style={styles.image}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image7, 'profile': profile, 'username': username})}>
-            <Image source={image7} style={styles.image}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image8, 'profile': profile, 'username': username})}>
-            <Image source={image8} style={styles.image}/>
-          </TouchableOpacity>
+          <FlatList
+          numColumns={3}
+            data={images}
+            // keyExtractor={(item) => item.id.toString()}
+            renderItem={({item},index) => <TouchableOpacity key={index} onPress={()=> navigation.navigate('MyPost', {'image': item, 'profile': profile, 'username': username})}>
+                <Image source={item} style={styles.image}/>
+              </TouchableOpacity>
+            }
+            showsHorizontalScrollIndicator={false}
+          />
         </View>
         <StatusBar style="auto"/>
       </View>
