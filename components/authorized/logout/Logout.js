@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
       fontSize:15,
       paddingVertical:6,
       fontFamily: 'Salsa_400Regular',
-      color: 'red'
+      color: '#750404'
     },
   });
