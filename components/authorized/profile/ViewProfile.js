@@ -22,6 +22,7 @@ export default function ViewProfile({render,setRender}) {
 
   const navigation = useNavigation();
 
+  const username = 'Fluffy'
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -29,7 +30,7 @@ export default function ViewProfile({render,setRender}) {
         <View style={{flex:1, flexDirection:'row', justifyContent:'space-around', alignItems:'center', margin:10}}>
           <View style={{alignItems:'center'}}>
             <Image source={profile} style={styles.bigProfile}/>
-            <Text style={styles.ProfileText}>Fluffy</Text>
+            <Text style={styles.ProfileText}>{username}</Text>
           </View>
           <View style={{alignItems:'center'}}>
             <View style={{flex:1, flexDirection:'row'}}>
@@ -49,15 +50,33 @@ export default function ViewProfile({render,setRender}) {
           <Line x1="0" y1="0" x2="500" y2="0" stroke="#FEC3B9" strokeWidth="5" />
         </Svg>
         <View style={styles.imageContainer}>
-          <Image source={image0} style={styles.image}/>
-          <Image source={image1} style={styles.image}/>
-          <Image source={image2} style={styles.image}/>
-          <Image source={image3} style={styles.image}/>
-          <Image source={image4} style={styles.image}/>
-          <Image source={image5} style={styles.image}/>
-          <Image source={image6} style={styles.image}/>
-          <Image source={image7} style={styles.image}/>
-          <Image source={image8} style={styles.image}/>
+          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image0, 'profile': profile, 'username': username})}>
+            <Image source={image0} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image1, 'profile': profile, 'username': username})}>
+            <Image source={image1} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image2, 'profile': profile, 'username': username})}>
+            <Image source={image2} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image3, 'profile': profile, 'username': username})}>
+            <Image source={image3} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image4, 'profile': profile, 'username': username})}>
+            <Image source={image4} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image5, 'profile': profile, 'username': username})}>
+            <Image source={image5} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image6, 'profile': profile, 'username': username})}>
+            <Image source={image6} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image7, 'profile': profile, 'username': username})}>
+            <Image source={image7} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=> navigation.navigate('MyPost', {'image': image8, 'profile': profile, 'username': username})}>
+            <Image source={image8} style={styles.image}/>
+          </TouchableOpacity>
         </View>
         <StatusBar style="auto"/>
       </View>
