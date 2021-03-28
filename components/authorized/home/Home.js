@@ -24,7 +24,6 @@ export default function Home({render,setRender}) {
           </Svg>
           {/*to be done as a separate component and mapped from db */}
           <FlatList
-          numColumns={3}
             data={posts}
             // keyExtractor={(item) => item.id.toString()}
             renderItem={({item},index) => <Post image={post} profile={userProfile} username='Username'/>
