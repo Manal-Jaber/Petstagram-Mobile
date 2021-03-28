@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import { Text, Image, View, StyleSheet, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 
 import fluffy from '../../../assets/profile.jpg';
-import mishka from '../../../assets/mishka.jpg'
+import mishka from '../../../assets/mishka.jpg';
+
+import Logout from '../logout/Logout';
 
 export default function ProfilePicker () {
   const profiles = [
@@ -52,6 +54,7 @@ export default function ProfilePicker () {
           }
           showsHorizontalScrollIndicator={false}
         />
+        <Logout/>
         </View>
       </TouchableWithoutFeedback>}
     </View>
