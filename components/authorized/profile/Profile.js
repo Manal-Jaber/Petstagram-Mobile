@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import Svg, { Line } from 'react-native-svg';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { LogoutAPI } from './LogoutAPI';
@@ -39,6 +40,11 @@ export default function Profile(props) {
               </TouchableOpacity>
             </View>
           </View>
+          <Text style={styles.bio}>I am the cutest cat ever.{"\n"}
+          You can get me at Peanuts.</Text>
+          <Svg height="10" width="500">
+            <Line x1="0" y1="0" x2="500" y2="0" stroke="#FEC3B9" strokeWidth="5" />
+          </Svg>
           <Text>Profile</Text>
           <TouchableOpacity onPress={(e) => handleLogout(e)}>
             <Text>Logout</Text>
@@ -53,7 +59,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection:'column',
     justifyContent: 'flex-start',
-    marginTop:10
+    marginTop: 10,
   },
   bigProfile: {
     height:70,
@@ -68,5 +74,11 @@ const styles = StyleSheet.create({
   Text: {
     width:50,
     margin:1,
+  },
+  bio: {
+    fontFamily: 'Roboto',
+    fontSize: 12,
+    color: 'rgba(0,0,0,0.7)',
+    margin: 10
   }
 });

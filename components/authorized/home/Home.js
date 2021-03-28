@@ -48,21 +48,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     marginTop:10
   },
-  head: {
-    flex: 1,
-    flexDirection:'row',
-    justifyContent: 'space-between',
-    // maxHeight:100,
-    height:50,
-    margin: 10,
-    paddingVertical:0
-  },
-  headLogoText: {
-    fontSize:36,
-    paddingVertical:6,
-    fontFamily: 'Cookie_400Regular',
-    height:60
-  },
   profileHead: {
     flexDirection:'row',
     justifyContent: 'space-evenly',
