@@ -20,7 +20,6 @@ export default function Authorized({render,setRender}) {
     <Tab.Navigator initialRouteName="Home" tabBarOptions={{ activeTintColor: 'black', }}>
         <Tab.Screen 
         name="Home"
-        component={Home}
         options={{
           tabBarLabel: 'Home',
           tabBarOptions: { showIcon: true, },
@@ -30,7 +29,9 @@ export default function Authorized({render,setRender}) {
               source={homeIcon}
             />
           ), 
-        }}/>
+        }}>
+          {(props)=><Home {...props} render={render} setRender={setRender}/>}
+        </Tab.Screen>
         <Tab.Screen name="Chat" component={Chat}
         options={{
           tabBarLabel: 'Chat',

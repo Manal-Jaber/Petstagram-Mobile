@@ -9,14 +9,14 @@ import Head from '../head/Head';
 import profile from '../../../assets/profile.jpg';
 import image from '../../../assets/image.jpg';
 
-export default function ViewProfile(props) {
+export default function ViewProfile({render,setRender}) {
 
   const navigation = useNavigation();
 
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Head/>
+        <Head render={render} setRender={setRender}/>
         <View style={{flex:1, flexDirection:'row', justifyContent:'space-around', alignItems:'center', margin:10}}>
           <View style={{alignItems:'center'}}>
             <Image source={profile} style={styles.bigProfile}/>

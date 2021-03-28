@@ -6,11 +6,11 @@ import Svg, { Line } from 'react-native-svg';
 import Head from '../head/Head';
 import Post from './Post';
 
-export default function Home() {
+export default function Home({render,setRender}) {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Head/>
+          <Head render={render} setRender={setRender}/>
           {/*Here goes search and stories */}
           <Svg height="10" width="500" style={{alignSelf:'flex-start'}}>
             <Line x1="0" y1="0" x2="500" y2="0" stroke="black" strokeWidth="2" />
