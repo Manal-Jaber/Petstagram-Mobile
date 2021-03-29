@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { Camera } from 'expo-camera';
+import * as MediaLibrary from 'expo-media-library';
+
+import flip from '../../../assets/flip.png';
+import snap from '../../../assets/snap.png';
 
 export default function Photo() {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -12,6 +17,10 @@ export default function Photo() {
       setHasPermission(status === 'granted');
     })();
   }, []);
+  const snapImage = async () => {
+    let { uri } = await Camera.takePictureAsync();
+  }
+//   const asset = await MediaLibrary.createAssetAsync(uri);
 
   if (hasPermission === null) {
     return <View />;
@@ -19,6 +28,8 @@ export default function Photo() {
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
   return (
     <View style={styles.container}>
       <Camera style={styles.camera} type={type}>
@@ -32,8 +43,12 @@ export default function Photo() {
                   : Camera.Constants.Type.back
               );
             }}>
-            <Text style={styles.text}> Flip </Text>
+                <Image source={flip} style={styles.icon}/>
           </TouchableOpacity>
+          <TouchableOpacity onPress={()=>snapImage}>
+            <Image style={{height:80, width:80, alignSelf:'center'}} source={snap}/>
+          </TouchableOpacity>
+        <Image source={{ uri: image }} style={{ width: width, height: height-155 }} />
         </View>
       </Camera>
     </View>
@@ -51,6 +66,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
     flexDirection: 'row',
+    alignItems: 'flex-end',
+    // justifyContent: 'space-around',
     margin: 20,
   },
   button: {
@@ -61,5 +78,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     color: 'white',
+  },
+  icon: {
+    width:40,
+    height:40,
   },
 });
