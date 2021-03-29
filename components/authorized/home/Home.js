@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, FlatList, Image, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, FlatList, Image, Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
 
 import Head from '../head/Head';
@@ -11,6 +11,9 @@ import userProfile from '../../../assets/userProfile.png';
 import post from '../../../assets/post.png';
 
 export default function Home({render,setRender}) {
+
+  const width = Dimensions.get("window").width;
+  const height = Dimensions.get("window").height;
   const posts = [
     {
       id: 0,
@@ -66,7 +69,7 @@ export default function Home({render,setRender}) {
             <Line x1="0" y1="0" x2="500" y2="0" stroke="black" strokeWidth="2" />
           </Svg>
           {/*to be done as a separate component and mapped from db */}
-          <ScrollView nestedScrollEnabled={true} contentContainerStyle={styles.contentContainer} style={styles.flat}>
+          <ScrollView nestedScrollEnabled={true} contentContainerStyle={{minHeight:300}} style={styles.flat}>
           <Post image={post} profile={userProfile} username='Username'/>
           <Post image={userProfile} profile={userProfile} username='Username'/>
           <Post image={post} profile={userProfile} username='Username'/>

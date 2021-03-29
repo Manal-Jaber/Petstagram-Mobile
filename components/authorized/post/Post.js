@@ -10,7 +10,7 @@ export default function Post({image, profile, username}) {
   const navigation = useNavigation();
   
     return (
-        <View style={{alignSelf: 'flex-start', flexDirection:'column', alignItems:'flex-start'}}>
+        <View>
             <View style={styles.profileHead}>
               <Image source={profile} style={styles.profile}/>
               <Text style={styles.headProfileText}>{username}</Text>
