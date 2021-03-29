@@ -8,6 +8,14 @@ import chat from '../../../assets/chat.png'
 export default function Post({image, profile, username}) {
   
   const navigation = useNavigation();
+  const [purr, setPurr] = useState(false);
+  const [purrs, setPurrs] = useState(6);
+
+  const handlePurr = ()=>{
+    setPurr(!purr)
+    purr? setPurrs(purrs+1): setPurrs(purrs-1)
+    console.log(purrs)
+  }
   
     return (
         <View>
@@ -18,14 +26,17 @@ export default function Post({image, profile, username}) {
             <Image source={image} style={styles.postImage}/>
             <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
                 <View style={{margin:10}}>
-                    <TouchableOpacity>
-                        <Image source={logo} style={{height:25, width:25, opacity: 0.5}}/>
+                    <TouchableOpacity onPress={()=>handlePurr()}>
+                        {purr?
+                        <Image source={logo} style={{height:25, width:25, opacity: 0.5}}/>:
+                        <Image source={logo} style={{height:25, width:25}}/>
+                        }
                     </TouchableOpacity>
-                    <Text style={styles.headProfileText}>6 purrs</Text>
+                    <Text style={styles.headProfileText}>{purrs} purrs</Text>
                 </View>
-              <TouchableOpacity style={{margin:10}}>
+              {/* <TouchableOpacity style={{margin:10}}>
                 <Text style={styles.headProfileText}>Quote goes here</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <TouchableOpacity style={{margin:10}} onPress={()=>navigation.navigate('Chat')}>
                 <Image style={{width: 20, height: 20}} source={chat}/>
               </TouchableOpacity>
@@ -54,7 +65,7 @@ const styles = StyleSheet.create({
     },
     postImage: {
       width: 365,
-      height: 300
+      height: 365
     }
   });
   
