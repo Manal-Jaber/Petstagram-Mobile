@@ -1,62 +1,65 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, FlatList, Image, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, FlatList, Image, Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
 
 import Head from '../head/Head';
 import Post from '../post/Post';
 
 
-import userProfile from '../../../assets/userProfile.png';
+import cat from '../../../assets/cat.png';
 import post from '../../../assets/post.png';
+import owl from '../../../assets/owl.png';
+import rabbit from '../../../assets/rabbit.png';
+import dog from '../../../assets/dog.png';
+import dog2 from '../../../assets/dog2.jpg';
+import rabbit2 from '../../../assets/rabbit2.png';
+import hamster from '../../../assets/hamster.png';
+import hamster2 from '../../../assets/hamster2.png';
+import panda from '../../../assets/panda.gif';
+import turtle from '../../../assets/turtle.png';
+import turtle2 from '../../../assets/turtle2.png';
 
 export default function Home({render,setRender}) {
+
   const posts = [
     {
       id: 0,
       name: post,
+      profile: cat,
+      username: 'Lucinda',
      },
      {
        id: 1,
-       name: userProfile,
+       name: owl,
+       profile: panda,
+       username: 'Sick',
      },
      {
        id: 2,
-       name: post,
+       name: rabbit,
+       profile: rabbit2,
+       username: 'Rabbit',
       },
       {
         id: 3,
-        name: userProfile,
+        name: hamster2,
+        profile: hamster,
+        username: 'Ratatoille',
       },
       {
         id: 4,
-        name: post,
+        name: turtle,
+        profile: turtle2,
+        username: 'Slow',
        },
        {
          id: 5,
-         name: userProfile,
+         name: dog2,
+         profile: dog,
+         username: 'Stella',
        },
-       {
-         id: 6,
-         name: post,
-        },
-        {
-          id: 7,
-          name: userProfile,
-        },
-        {
-          id: 8,
-          name: post,
-         },
-         {
-           id: 9,
-           name: userProfile,
-         },
-         {
-           id: 10,
-           name: post,
-          }
-  ]
+    ]
     return (
       <ScrollView style={{ minHeight: 500 }} nestedScrollEnabled={true}>
         <View style={styles.container}>
@@ -66,30 +69,15 @@ export default function Home({render,setRender}) {
             <Line x1="0" y1="0" x2="500" y2="0" stroke="black" strokeWidth="2" />
           </Svg>
           {/*to be done as a separate component and mapped from db */}
-          <ScrollView nestedScrollEnabled={true} contentContainerStyle={styles.contentContainer} style={styles.flat}>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={userProfile} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-          <Post image={post} profile={userProfile} username='Username'/>
-            {/* <FlatList
+          <ScrollView nestedScrollEnabled={true} contentContainerStyle={{minHeight:300}} style={styles.flat}>
+            <FlatList
               data={posts}
               keyExtractor={(item) => item.id.toString()}
-              renderItem={({item},index) => <Text>Hello</Text>
-              // <Post key={index} image={item.name} profile={userProfile} username='Username'/>
+              renderItem={({item},index) =><Post image={item.name} profile={item.profile} username={item.username}/>
               }
               showsHorizontalScrollIndicator={false}
-            /> */}
+            />
+            <Text style={{textAlign:'center', fontWeight:'bold'}}>There are no more posts to show</Text>
           </ScrollView>
           <StatusBar style="auto"/>
         </View>

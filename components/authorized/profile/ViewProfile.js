@@ -38,7 +38,7 @@ export default function ViewProfile({render,setRender}) {
           </View>
           <View style={{alignItems:'center'}}>
             <View style={{flex:1, flexDirection:'row'}}>
-              <Text style={[styles.ProfileText,styles.Text]}>41 posts</Text>
+              <Text style={[styles.ProfileText,styles.Text]}> 9 posts</Text>
               <Text style={[styles.ProfileText,styles.Text]}>100 sniffs</Text>
               <Text style={[styles.ProfileText,styles.Text]}>300 sniffing</Text>
             </View>
